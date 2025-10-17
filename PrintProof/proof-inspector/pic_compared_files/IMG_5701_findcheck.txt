@@ -1,0 +1,11 @@
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f91.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f96.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f97.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f98.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f100.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f101.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f102.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f104.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f107.png False
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f108.png True
+D:\home\soulwhy_work\Desktop\workspace\OCR\pic_compared_files\tmp\f109.png True
