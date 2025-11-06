@@ -1,2 +1,2 @@
 # ice
-for self-introduction
+some side projects for self-introduction
