@@ -1,0 +1,1 @@
+這是realtime whisper，使用麥克風音訊，注意顯卡vram和whisper model的大小
