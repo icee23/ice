@@ -46,12 +46,12 @@ Automated notification and customer service system
 - **Features:** Real-time alerts, Customer service automation, Business process integration
 - **Tech:** Python, LINE Messaging API, Flask
 
-### 🎤 [Whisper - realtime whisper](./whisper)
+### 🎤 [Whisper - Realtime Whisper](./whisper)
 Speech-to-text and audio processing application
 - **Features:** Multi-language support, Real-time transcription
 - **Tech:** Python, OpenAI Whisper, Audio Processing
 
-### 🔄 [unvoice/voice Refine toolkit](./uv_refine)
+### 🔄 [Unvoice/Voice Refine toolkit](./uv_refine)
 Refine unvoiced/voiced boundaries in HTK labels
 - **Features:** Batch processing, Automated optimization
 - **Tech:** Python, Digital Signal Process, NumPy, C
