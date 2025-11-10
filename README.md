@@ -54,7 +54,7 @@ Speech-to-text and audio processing application
 ### 🔄 [Unvoice/Voice Refine toolkit](./uv_refine)
 Refine unvoiced/voiced boundaries in HTK labels
 - **Features:** Batch processing, Automated optimization
-- **Tech:** Python, Digital Signal Process, NumPy, C
+- **Tech:** Python, Digital Signal Processing, NumPy, C
 
 ## 🏆 Achievements
 
