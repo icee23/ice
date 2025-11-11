@@ -33,7 +33,7 @@ I'm a software engineer with a passion for AI/ML and automation solutions. With 
 ![LINE](https://img.shields.io/badge/LINE_API-00C300?style=for-the-badge&logo=line&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-## 📊 Featured Projects
+## 📊 Side Projects
 
 ### 🖨️ [PrintProof - Automated Print Verification System](./PrintProof)
 Computer vision-based system for automated print quality control
