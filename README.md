@@ -56,6 +56,13 @@ Refine unvoiced/voiced boundaries in HTK labels
 - **Features:** Batch processing, Automated optimization
 - **Tech:** Python, Digital Signal Processing, NumPy, C
 
+### 🎙️ [Voice Conversion - Speech Quality Enhancement](./voice_conversion)
+Voice conversion system for speech corpus quality improvement using deep learning
+- **Achievement:** ROCLING 2019 Poster Presentation 2nd Place 🥈
+- **Impact:** Successfully enhanced TTS corpus quality, reducing noise and echo
+- **Tech:** Python, PyTorch, WORLD Vocoder, DBLSTM, Signal Processing
+- **Application:** Enhanced 1,478 audio files across 4 speaking rates
+
 ## 🏆 Achievements
 
 - **2022** - Launched "聽新聞" TTS product at 聯合新聞網, processing 2000+ articles daily

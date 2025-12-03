@@ -1,0 +1,114 @@
+{    
+    "source_dir_path":"data/source",
+    "target_dir_path":"data/target",
+    "gen_dir_path":"data/gen",
+	
+	"source_train_list":"list/SF1_train.list",
+	"source_eval_list":"list/SF1_eval.list",
+	"source_test_list":"list/SF1_test.list",
+	"source_train_lab_list":"list/SF1_train_lab.list",
+	"source_eval_lab_list":"list/SF1_eval_lab.list",
+	"source_test_lab_list":"list/SF1_test_lab.list",
+	"target_train_list":"list/TF1_train.list",
+	"target_eval_list":"list/TF1_eval.list",
+	"target_test_list":"list/TF1_test.list",
+	"target_train_lab_list":"list/TF1_train_lab.list",
+	"target_eval_lab_list":"list/TF1_eval_lab.list",
+	"target_test_lab_list":"list/TF1_test_lab.list",
+	
+	"train_data_path":"data/pair/SF1-TF1/jnt/it3_jnt.h5",
+	"eval_data_path":"data/pair/SF1-TF1/jnt/it3_eval_jnt.h5",
+	"test_data_path":"data/pair/SF1-TF1/jnt/it3_test_jnt.h5",
+	
+	"train_dnndata_path":"data/pair/SF1-TF1/jnt/dnn3_jnt.h5",
+	"eval_dnndata_path":"data/pair/SF1-TF1/jnt/dnn3_eval_jnt.h5",
+	"test_dnndata_path":"data/pair/SF1-TF1/jnt/dnn3_test_jnt.h5",
+	
+	"train_blstmdata_path":"data/pair/SF1-TF1/jnt/blstm3_jnt.h5",
+	"eval_blstmdata_path":"data/pair/SF1-TF1/jnt/blstm3_eval_jnt.h5",
+	"test_blstmdata_path":"data/pair/SF1-TF1/jnt/blstm3_test_jnt.h5",
+	
+	"diff_train_blstmdata_path":"data/pair/SF1-TF1/jnt/blstm3_diff_jnt.h5",
+	"diff_eval_blstmdata_path":"data/pair/SF1-TF1/jnt/blstm3_diff_eval_jnt.h5",
+	"diff_test_blstmdata_path":"data/pair/SF1-TF1/jnt/blstm3_diff_test_jnt.h5",
+	
+	"train_dnndata_BLSTM_path":"data/pair/SF1-TF1/jnt/dnn3_BLSTM_jnt.h5",
+	"eval_dnndata_BLSTM_path":"data/pair/SF1-TF1/jnt/dnn3_BLSTM_eval_jnt.h5",
+	"test_dnndata_BLSTM_path":"data/pair/SF1-TF1/jnt/dnn3_BLSTM_test_jnt.h5",
+	
+	"diff_train_dnndata_path":"data/pair/SF1-TF1/jnt/dnn3_diff_jnt.h5",
+	"diff_eval_dnndata_path":"data/pair/SF1-TF1/jnt/dnn3_diff_eval_jnt.h5",
+	"diff_test_dnndata_path":"data/pair/SF1-TF1/jnt/dnn3_diff_test_jnt.h5",
+	
+	"diff_train":"data/pair/SF1-TF1/jnt/it3_diff_jnt.h5",
+	"diff_eval":"data/pair/SF1-TF1/jnt/it3_diff_eval_jnt.h5",
+	"diff_test":"data/pair/SF1-TF1/jnt/it3_diff_test_jnt.h5",
+	
+	"train_diffdata_path":"data/pair/SF1-TF1/jnt/it3_diff_jnt.h5",
+	
+	"state_dict_path":"data/pair/SF1-TF1/model/dnn_VC.model",
+	"state_dict_path2":"data/pair/SF1-TF1/model/dnn_dtwVC.model",
+	"state_dict_diff_path":"data/pair/SF1-TF1/model/dnn_diff_VC.model",
+	"state_dict_BLSTM_path":"data/pair/SF1-TF1/model/BLSTM_VC.model",
+	
+	"source_var_path":"data/pair/SF1-TF1/stats/SF1_source_var.h5",
+	"var_path":"data/pair/SF1-TF1/stats/TF1_var.h5",
+	"var_diff_path":"data/pair/SF1-TF1/stats/diff_var.h5",
+	"dnn3_var_diff_path":"data/pair/SF1-TF1/stats/diff_dnn3_var.h5",
+	
+	"gv_path":"data/pair/SF1-TF1/stats/TF1.h5",
+	"cvgv_path":"data/pair/SF1-TF1/model/cvgv.h5",
+	
+	"test_path":"data/var_test.h5",
+	
+	"eval_list_file":"list/SF1_eval.list",
+	"test_list_file":"list/SF1_test.list",
+	
+	"total_list_file":"list/total_Normal.list",
+
+    "mgc_order": 40,
+    "sampling_rate": 16000,
+    "frame_shift": 0.005,
+    "frame_len": 0.025,
+    "fft_len": 512,
+    "frequency_warping":0.42,
+    "normalize": 1,
+    "gamma":0,
+
+    "state_in_phone_min": 1,
+    "state_in_phone_max": 6,
+    "frame_in_state_min": 1,
+    "frame_in_state_max": 90,
+    "frame_in_phone_min": 1,
+    "frame_in_phone_max": 150,
+
+    "speed":["Slow","Medium","Fast"],
+
+    "pf_mcp":2.0,
+    "fl": 4096,
+    "co": 2047,
+	
+	"input_size":80,
+	"output_size":80,
+	
+    "max_epoch": 200,
+    "batch_size": 4096,
+    "hidden_size": 2048,
+    "use_cuda": true,
+    "max_iteration": 200,
+	
+	"analyzer":"world",
+	"wav_fftl": 1024,
+	"wav_shiftms": 5,
+	"f0_minf0": 50,
+	"f0_maxf0": 550,
+	
+	"power_threshold": -15,
+	"n_iter": 3,
+	
+	"alpha_value": 0.410,
+	"GV_morph_coeff": 1.0,
+	
+	"gmmmode":"diff"
+
+}
