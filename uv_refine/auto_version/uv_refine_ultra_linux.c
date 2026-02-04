@@ -15,6 +15,13 @@
 
 #define PI 3.1415926535897932384626433832795028841971
 
+#define SAFEFREE(ptr) do { \
+    if ((ptr) != NULL) { \
+        free(ptr); \
+        (ptr) = NULL; \
+    } \
+} while(0)
+
 // global variable
 float alias         = fs/2;
 float window_size_2 = 0.025*fs;                   // for 40Hz low-pass filter
@@ -133,38 +140,31 @@ typedef struct _choice{
     int AV_path[2];
 } choice;
 
-void safefree(void *pp){
-    if(pp != NULL){
-        free(pp);
-        pp = NULL;
-    }
-}
-
 void choice_free(choice *choice_, int len){
     int i;
     for(i = 0; i < len; i++){
         choice_[i].size = 0;
         choice_[i].AV_path[0] = 0;
         choice_[i].AV_path[1] = 0;
-        safefree(choice_[i].item);
+        SAFEFREE(choice_[i].item);
     }
-    safefree(choice_);
+    SAFEFREE(choice_);
 }
 
 void mul_free(mul *mul_){
-	safefree(mul_->item);
+	SAFEFREE(mul_->item);
 	mul_->size = 0;
 }
 
 void fixed_seg_free(fixed_seg *fixed_seg_){
 	int i;
 	for(i = 0; i < fixed_seg_->size; i++){
-        safefree(fixed_seg_->item[i].d_KL_sq);
-        safefree(fixed_seg_->item[i].index_sq);
-        safefree(fixed_seg_->item[i].peak_index_sq);
-        safefree(fixed_seg_->item[i].time_sq);
+        SAFEFREE(fixed_seg_->item[i].d_KL_sq);
+        SAFEFREE(fixed_seg_->item[i].index_sq);
+        SAFEFREE(fixed_seg_->item[i].peak_index_sq);
+        SAFEFREE(fixed_seg_->item[i].time_sq);
 	}
-	safefree(fixed_seg_->item);
+	SAFEFREE(fixed_seg_->item);
 	fixed_seg_->size = 0;
 }
 
@@ -179,9 +179,8 @@ void read_phoneme_table(char *fn, phoneme_table *phtable_){
 		exit(1);
 	}
 	while(!feof(fp)){
-		fgets(line, 1023, fp);
+        fgets(line, 1023, fp);
 		temp_size++;
-
 	}
 	temp_size--;
 	phtable_->size = temp_size;
@@ -236,7 +235,7 @@ int load_fn_list(char *fn, fn_list *pscp){
 	}
 
 	pscp->size = 0;
-	while (!feof(fp) && fscanf(fp, "%s\n", line)) {
+	while (fscanf(fp, "%s\n", line) == 1) {
 		pscp->size++;
 	}
 	pscp->fn = (char **)calloc(pscp->size, sizeof(char*));
@@ -623,7 +622,7 @@ double* convolve(const double *Signal/* SignalLen */, size_t SignalLen,
     for(i = start; i <= stop; i++){
         temp_Result[j++] = Result[i];
     }
-    safefree(Result);
+    SAFEFREE(Result);
 
     /*printf("temp_Result = ");
     for(j = 0; j < len; j++){
@@ -643,7 +642,7 @@ double* rectified(double *x_4, int len){
         else
             x_3[i] = x_4[i];
     }
-    safefree(x_4);
+    SAFEFREE(x_4);
     return x_3;
 }
 
@@ -680,7 +679,7 @@ double* DKL_100(double *Ex1_, int len){
             out58[i] = 0.5*(Ex1_[i-space2]*Ex1_log[i-space2] - Ex1_[i-space2]*Ex1_log[i+space2]) + 0.5*(Ex1_[i+space2]*Ex1_log[i+space2] - Ex1_[i+space2]*Ex1_log[i-space2]);
         }
     }
-    safefree(Ex1_log);
+    SAFEFREE(Ex1_log);
     return out58;
 }
 
@@ -706,43 +705,43 @@ printf("check line 4 ----------------------------------------------\n");
     Ex5 = array_divide(x5_env_, XX, len);
     Ex6 = array_divide(x6_env_, XX, len);
 
-    safefree(XX);
+    SAFEFREE(XX);
 //printf("check line 5 ----------------------------------------------\n");
 printf("check line 5 --");
     temp_Ex1 = DKL_100(Ex1, len);
-    safefree(Ex1);
+    SAFEFREE(Ex1);
     array_sum(out85, temp_Ex1, len);
-    safefree(temp_Ex1);
+    SAFEFREE(temp_Ex1);
 printf(" 5.1 --");
 
     temp_Ex2 = DKL_100(Ex2, len);
-    safefree(Ex2);
+    SAFEFREE(Ex2);
     array_sum(out85, temp_Ex2, len);
-    safefree(temp_Ex2);
+    SAFEFREE(temp_Ex2);
 printf(" 5.2 --");
 
     temp_Ex3 = DKL_100(Ex3, len);
-    safefree(Ex3);
+    SAFEFREE(Ex3);
     array_sum(out85, temp_Ex3, len);
-    safefree(temp_Ex3);
+    SAFEFREE(temp_Ex3);
 printf(" 5.3 --");
 
     temp_Ex4 = DKL_100(Ex4, len);
-    safefree(Ex4);
+    SAFEFREE(Ex4);
     array_sum(out85, temp_Ex4, len);
-    safefree(temp_Ex4);
+    SAFEFREE(temp_Ex4);
 printf(" 5.4 --");
 
     temp_Ex5 = DKL_100(Ex5, len);
-    safefree(Ex5);
+    SAFEFREE(Ex5);
     array_sum(out85, temp_Ex5, len);
-    safefree(temp_Ex5);
+    SAFEFREE(temp_Ex5);
 printf(" 5.5 --");
 
     temp_Ex6 = DKL_100(Ex6, len);
-    safefree(Ex6);
+    SAFEFREE(Ex6);
     array_sum(out85, temp_Ex6, len);
-    safefree(temp_Ex6);
+    SAFEFREE(temp_Ex6);
 printf(" 5.6 ----\n");
 
 printf("check line 6 ----------------------------------------------\n");
@@ -754,18 +753,18 @@ printf("check line 6 ----------------------------------------------\n");
     array_sum(out85, temp_Ex6, len);
 
 
-    safefree(temp_Ex2);
-    safefree(temp_Ex3);
-    safefree(temp_Ex4);
-    safefree(temp_Ex5);
-    safefree(temp_Ex6);
-    safefree(Ex1);
-    safefree(Ex2);
-    safefree(Ex3);
-    safefree(Ex4);
-    safefree(Ex5);
-    safefree(Ex6);
-    safefree(XX);*/
+    SAFEFREE(temp_Ex2);
+    SAFEFREE(temp_Ex3);
+    SAFEFREE(temp_Ex4);
+    SAFEFREE(temp_Ex5);
+    SAFEFREE(temp_Ex6);
+    SAFEFREE(Ex1);
+    SAFEFREE(Ex2);
+    SAFEFREE(Ex3);
+    SAFEFREE(Ex4);
+    SAFEFREE(Ex5);
+    SAFEFREE(Ex6);
+    SAFEFREE(XX);*/
     return out85;
 }
 
@@ -1016,7 +1015,7 @@ fclose(fp);*/
             Fixseg->item[k].cand_index[4] = max_dKL_index;
             Fixseg->item[k].cand_index_len += 1;
         }*/
-        safefree(d_KL_2);
+        SAFEFREE(d_KL_2);
 //printf("%d : %d\n", k+1, Fixseg->item[k].cand_index_len);
     }
 //system("pause");
@@ -1946,28 +1945,28 @@ printf(" mulout_finished ");
         wav_name[0] = '\0';
         outlab_name[0] = '\0';
         d_KL_C_name[0] = '\0';
-        safefree(x);
-        safefree(x_double);
-        safefree(numSamples);
-        safefree(x1);
-        safefree(x2);
-        safefree(x3);
-        safefree(x4);
-        safefree(x5);
-        safefree(x6);
-        safefree(x1_env);
-        safefree(x2_env);
-        safefree(x3_env);
-        safefree(x4_env);
-        safefree(x5_env);
-        safefree(x6_env);
-        safefree(x1_env_complex);
-        safefree(x2_env_complex);
-        safefree(x3_env_complex);
-        safefree(x4_env_complex);
-        safefree(x5_env_complex);
-        safefree(x6_env_complex);
-        safefree(d_KL);
+        SAFEFREE(x);
+        SAFEFREE(x_double);
+        SAFEFREE(numSamples);
+        SAFEFREE(x1);
+        SAFEFREE(x2);
+        SAFEFREE(x3);
+        SAFEFREE(x4);
+        SAFEFREE(x5);
+        SAFEFREE(x6);
+        SAFEFREE(x1_env);
+        SAFEFREE(x2_env);
+        SAFEFREE(x3_env);
+        SAFEFREE(x4_env);
+        SAFEFREE(x5_env);
+        SAFEFREE(x6_env);
+        SAFEFREE(x1_env_complex);
+        SAFEFREE(x2_env_complex);
+        SAFEFREE(x3_env_complex);
+        SAFEFREE(x4_env_complex);
+        SAFEFREE(x5_env_complex);
+        SAFEFREE(x6_env_complex);
+        SAFEFREE(d_KL);
         choice_free(all_choice, mulall_nosp.size);
         mul_free(&mulall);
         mul_free(&mulall_nosp);
